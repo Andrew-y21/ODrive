@@ -212,6 +212,7 @@ class Startup:
             print(f"Error updating position: {e}")
 
 
+
     @staticmethod
     def normalize_angle(angle):
         while angle > math.pi:
