@@ -56,8 +56,8 @@ class Startup:
         self.odrv0.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
         time.sleep(0.01)
 
-        self.odrv0.axis0.controller.config.vel_ramp_rate = 10.0
-        self.odrv0.axis1.controller.config.vel_ramp_rate = 10.0
+        #self.odrv0.axis0.controller.config.vel_ramp_rate = 10.0
+        #self.odrv0.axis1.controller.config.vel_ramp_rate = 10.0
         
         self.odrv0.axis0.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
         self.odrv0.axis1.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
