@@ -12,13 +12,13 @@ class Startup:
         self.x = 0
         self.y = 0
         self.theta = 0
-        self.encoder_cpr = 36
+        self.encoder_cpr = 18
         self.odrv0 = None
         self.left_pos_prev = 0
         self.right_pos_prev = 0
         self.left_direction = 1   # Flip left wheel direction
         self.right_direction = -1   # Keep right wheel direction
-        self.max_speed = 6.9
+        self.max_speed = 5
         
         pygame.init()
         self.joysticks = []
@@ -81,6 +81,9 @@ class Startup:
             
             print(f"Left wheel - Target: {left_vel:.2f} m/s, Actual: {actual_left_mps:.2f} m/s")
             print(f"Right wheel - Target: {right_vel:.2f} m/s, Actual: {actual_right_mps:.2f} m/s")
+            print(self.odrv0.axis0.encoder.pos_estimate, self.odrv0.axis0.encoder.vel_estimate)
+            print(self.odrv0.axis1.encoder.pos_estimate, self.odrv0.axis1.encoder.vel_estimate)
+
         except Exception as e:
             print(f"Error setting velocities: {e}")
             self.stop_motors()
