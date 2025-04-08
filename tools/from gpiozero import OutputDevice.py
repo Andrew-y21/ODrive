@@ -6,8 +6,8 @@ class Relays:
     def __init__(self):
     # Use GPIO pin 17 (you can change this)
         self.LinearUp = OutputDevice(17, active_high=False, initial_value=False)
-        self.LinearDown = OutputDevice(18, active_high=False, initial_value=False)
-        self.MotorOn = OutputDevice(18, active_high=False, initial_value=False)
+        self.LinearDown = OutputDevice(23, active_high=False, initial_value=False)
+        self.MotorOn = OutputDevice(24, active_high=False, initial_value=False)
         pygame.init()
         pygame.joystick.init()
         self.joysticks = []
@@ -58,7 +58,7 @@ class Relays:
             sleep(0.1)
 
     def moveBackUp(self):
-        
+
     
 
     def moveBackDown(self):
