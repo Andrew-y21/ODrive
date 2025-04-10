@@ -8,8 +8,8 @@ class Relays:
         self.LinearUp = OutputDevice(17, active_high=False, initial_value=False)
         self.LinearDown = OutputDevice(23, active_high=False, initial_value=False)
         self.MotorOn = OutputDevice(24, active_high=False, initial_value=False)
-        pygame.init()
-        pygame.joystick.init()
+        #pygame.init()
+        #pygame.joystick.init()
         self.joysticks = []
         self.LinearUpStatus = False
         self.LinearDownStatus = False
@@ -23,7 +23,7 @@ class Relays:
         else:
             self.MotorOn.off()
     
-
+    """ 
     def getPresses(self):
         if pygame.joystick.get_count() > 0:
             self.joystick = pygame.joystick.Joystick(0)
@@ -55,13 +55,13 @@ class Relays:
                     self.LinearUp.off()
                     self.LinearDown.off()
 
-            sleep(0.1)
+            sleep(0.1) """
 
-    def moveBackUp(self):
-
+#    def moveBackUp(self):
+        
     
 
-    def moveBackDown(self):
+#    def moveBackDown(self):
 
 
 
