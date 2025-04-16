@@ -12,13 +12,13 @@ class Startup:
         self.x = 0
         self.y = 0
         self.theta = 0
-        self.encoder_cpr = 18
+        self.encoder_cpr = 36
         self.odrv0 = None
         self.left_pos_prev = 0
         self.right_pos_prev = 0
         self.left_direction = 1   # Flip left wheel direction
         self.right_direction = -1   # Keep right wheel direction
-        self.max_speed = 5
+        self.max_speed = 4
         
         pygame.init()
         self.joysticks = []
