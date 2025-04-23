@@ -5,9 +5,11 @@ import pygame
 class Relays:
     def __init__(self):
     # Use GPIO pin 17 (you can change this)
-        self.LinearUp = OutputDevice(17, active_high=False, initial_value=False)
-        self.LinearDown = OutputDevice(23, active_high=False, initial_value=False)
-        self.MotorOn = OutputDevice(24, active_high=False, initial_value=False)
+        self.LinearUpPostive = OutputDevice(17, active_high=False, initial_value=False)
+        self.LinearDownPostive = OutputDevice(22, active_high=False, initial_value=False)
+        self.LinearUpNegitive = OutputDevice(27, active_high=False, initial_value=False)
+        self.LinearDownNegitive = OutputDevice(23, active_high=False, initial_value=False)
+        self.UnlockMotorRelays = OutputDevice(24, active_high=False, initial_value=False)
         #pygame.init()
         #pygame.joystick.init()
         self.joysticks = []
@@ -19,9 +21,12 @@ class Relays:
 
     def motorOn_Off(self, State):
         if State == True:
-            self.MotorOn.on()
+            self.UnlockMotorRelays.on()
         else:
-            self.MotorOn.off()
+            self.UnlockMotorRelays.off()
+
+    #def trunkUp(self):
+        
     
     """ 
     def getPresses(self):
