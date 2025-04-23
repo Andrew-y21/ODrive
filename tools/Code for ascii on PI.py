@@ -81,7 +81,7 @@ class Startup:
         pygame.quit()
 
 def main():
-    robot = Startup(serial_port="/dev/ttyUSB0")  # Change to your port
+    robot = Startup(serial_port="/dev/serial0")  # Change to your port
     robot.gamepad_control_loop()
 
 if __name__ == "__main__":
