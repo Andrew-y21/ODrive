@@ -37,8 +37,8 @@ class joystick_useage:
 
         #LedState = None
         #TrunkState = None    
-        running = True
-        while running:
+        #running = True
+        #while running:
             pygame.event.pump()
 
             # Read joystick axes
@@ -46,6 +46,7 @@ class joystick_useage:
                 y = -self.map_joystick(self.joystick.get_axis(1))
                 x = self.map_joystick(self.joystick.get_axis(0))
                 time.sleep(0.1)
+
 
             # Handle events
             for event in pygame.event.get():
@@ -68,7 +69,7 @@ class joystick_useage:
                     if self.joystick.get_button(2):
                         self.LedState = "swtich"
 
-        return x, y
+            return x, y
 
 
 

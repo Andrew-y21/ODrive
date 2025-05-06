@@ -31,7 +31,7 @@ class Main:
         while True: # main loop
     
             self.rawX, self.rawY = self.joystick.gamepad_control_loop()
-            self.leftspeed, self.rightspeed = self.motor.calculate_motor_speeds(self.rawY, self.rawX)
+            self.leftspeed, self.rightspeed = self.motor.calculate_motor_speeds(self, self.rawY, self.rawX)
 
             if (self.joystick().LedState != None or self.joystick().TrunkState != None):
 
@@ -42,6 +42,12 @@ class Main:
 
                 self.joystick().LedState = None
                 self.joystick().TrunkState = None
+        
+            self.motor.set_wheel_velocities(self, self.leftspeed, self.rightspeed)
+
+            
+
+            
 
 
 
