@@ -3,7 +3,7 @@ import serial
 class SerialComms:
     def __init__(self):
         try:
-            self.ser = serial.Serial('/dev/ttyACM0',9600) # init serial
+            self.ser = serial.Serial('/dev/ttyACM0',9600, timeout=0.5) # init serial
             self.ser.reset_input_buffer()
 
         except serial.SerialException as e:

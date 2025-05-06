@@ -4,7 +4,7 @@ import math
 import serial
 
 class Startup:
-    def __init__(self, serial_port="/dev/ttyUSB0", baudrate=115200):
+    def __init__(self, serial_port="/dev/serial0", baudrate=115200):
         self.wheelbase = 0.792
         self.wheel_radius = 0.2286
         self.encoder_cpr = 36
@@ -80,9 +80,10 @@ class Startup:
                 running = False
         pygame.quit()"""
 
-def main():
+"""def main():
     robot = Startup(serial_port="/dev/serial0")  # Change to your port
     robot.gamepad_control_loop()
 
 if __name__ == "__main__":
     main()
+"""
