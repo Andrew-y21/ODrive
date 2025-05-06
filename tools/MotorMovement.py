@@ -65,7 +65,7 @@ class Startup:
             right_speed /= max_val
         return left_speed, right_speed
 
-    def gamepad_control_loop(self):
+    """def gamepad_control_loop(self):
         running = True
         while running:
             pygame.event.pump()
@@ -78,7 +78,7 @@ class Startup:
             else:
                 print("No joystick connected")
                 running = False
-        pygame.quit()
+        pygame.quit()"""
 
 def main():
     robot = Startup(serial_port="/dev/serial0")  # Change to your port

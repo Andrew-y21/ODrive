@@ -9,8 +9,7 @@ class joystick_useage:
         self.joysticks = []
         pygame.joystick.init()
         self.init_gamepad()
-        self.LedState
-        self.TrunkState
+        
 
 
     def init_gamepad(self):
@@ -32,6 +31,9 @@ class joystick_useage:
    
 
     def gamepad_control_loop(self):
+
+        LedState = None
+        TrunkState = None    
         running = True
         while running:
             pygame.event.pump()
@@ -46,24 +48,24 @@ class joystick_useage:
             for event in pygame.event.get():
                 if event.type == pygame.JOYBUTTONDOWN:
                     if self.joystick.get_button(11):
-                        self.TrunkState = "up"
+                        TrunkState = "up"
 
                     if self.joystick.get_button(12):
-                        self.TrunkState = "down"
+                        TrunkState = "down"
 
                     if self.joystick.get_button(3):
-                        self.LedState = "off"
+                        LedState = "off"
 
                     if self.joystick.get_button(0):
-                        self.LedState = "white"
+                        LedState = "white"
 
                     if self.joystick.get_button(1):
-                        self.LedState = "rainbow"
+                        LedState = "rainbow"
                     
                     if self.joystick.get_button(2):
-                        self.LedState = "swtich"
+                        LedState = "swtich"
 
-        return self.LedState, self.TrunkState
+        return LedState, TrunkState, x, y
 
 
 
