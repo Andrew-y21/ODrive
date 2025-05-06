@@ -9,6 +9,8 @@ class joystick_useage:
         self.joysticks = []
         pygame.joystick.init()
         self.init_gamepad()
+        self.LedState
+        self.TrunkState
 
 
     def init_gamepad(self):
@@ -27,40 +29,42 @@ class joystick_useage:
         return value
     
 
+   
+
     def gamepad_control_loop(self):
         running = True
         while running:
             pygame.event.pump()
+
+            # Read joystick axes
             if self.joystick:
                 y = -self.map_joystick(self.joystick.get_axis(1))
                 x = self.map_joystick(self.joystick.get_axis(0))
-                left_speed, right_speed = self.calculate_motor_speeds(y, x)
-                self.set_wheel_velocities(left_speed, right_speed)
                 time.sleep(0.1)
-            else:
-                print("No joystick connected")
-                running = False
-        
-        
-        
+
+            # Handle events
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-            
-                elif event.type == pygame.JOYBUTTONDOWN:
+                if event.type == pygame.JOYBUTTONDOWN:
+                    if self.joystick.get_button(11):
+                        self.TrunkState = "up"
+
+                    if self.joystick.get_button(12):
+                        self.TrunkState = "down"
+
+                    if self.joystick.get_button(3):
+                        self.LedState = "off"
+
                     if self.joystick.get_button(0):
-                        self.LinearDown.off()
-                        self.LinearUp.on()
-                        print("Up relay on")
+                        self.LedState = "white"
 
-                    elif self.joystick.get_button(1):
-                        self.LinearUp.off()
-                        self.LinearDown.on()
-                        print("Down relay on")
+                    if self.joystick.get_button(1):
+                        self.LedState = "rainbow"
+                    
+                    if self.joystick.get_button(2):
+                        self.LedState = "swtich"
 
-                elif event.type == pygame.JOYBUTTONUP:
-                    self.LinearUp.off()
-                    self.LinearDown.off()
+        return self.LedState, self.TrunkState
+
 
 
 

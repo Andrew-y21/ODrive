@@ -1,6 +1,6 @@
 from gpiozero import OutputDevice
 from time import sleep
-import pygame
+
 
 class Relays:
     def __init__(self):
