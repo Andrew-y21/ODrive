@@ -3,8 +3,9 @@ import serial
 class SerialComms:
     def __init__(self):
         try:
-            self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0.5)
+            self.ser = serial.Serial('COM3', 9600, timeout=0.5)
             self.ser.reset_input_buffer()
+            print("hi")
         except serial.SerialException as e:
             print(f"Serial port error: {e}")
             self.ser = None
@@ -13,6 +14,7 @@ class SerialComms:
         if self.ser and self.ser.is_open:
             try:
                 self.ser.write((inputVal + "\n").encode())
+                print("sent")
             except serial.SerialException as e:
                 print(f"Error writing to serial: {e}")
 

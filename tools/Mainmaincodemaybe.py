@@ -1,5 +1,3 @@
-# main_runner.py
-
 from Joystickuseage import joystick_useage
 from runnnnn_commmms import SerialComms
 from MotorMovement import Startup
@@ -19,7 +17,7 @@ class Main:
 
     def main(self):
         print("System started. Listening to joystick input...")
-        
+
         try:
             while True:
                 self.rawX, self.rawY = self.joystick.gamepad_control_loop()
