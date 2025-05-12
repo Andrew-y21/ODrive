@@ -1,6 +1,8 @@
 import time
 import math
 import serial
+from runnnnn_commmms import SerialComms
+
 
 class Startup:
     def __init__(self, serial_port="/dev/serial0", baudrate=115200):
@@ -10,27 +12,32 @@ class Startup:
         self.left_direction = 1
         self.right_direction = -1
         self.max_speed = 4
+        self.run_coms = SerialComms()
 
-        try:
-            self.ser = serial.Serial(serial_port, baudrate, timeout=0.5)
-        except serial.SerialException as e:
-            print(f"Serial error: {e}")
-            self.ser = None
+        #try:
+        #    self.ser = serial.Serial(serial_port, baudrate, timeout=0.5)
+        #except serial.SerialException as e:
+        #    print(f"Serial error: {e}")
+        #    self.ser = None
 
     def stop_motors(self):
         self.send_ascii_command("v 0 0\n")
         self.send_ascii_command("v 1 0\n")
+        self.run_coms.sendComms("v 0 0\n")
+        self.run_coms.sendComms("v 1 0\n")
 
     def send_ascii_command(self, command):
-        if not self.ser or not self.ser.is_open:
-            #print("Serial not initialized.")
-            return
+        #if not self.ser or not self.ser.is_open:
+        #    #print("Serial not initialized.")
+        #    return
         try:
-            self.ser.write(command.encode('utf-8'))
-            time.sleep(0.01)
-            response = self.ser.readline().decode('utf-8').strip()
-            if response:
-                print(f"ODrive response: {response}")
+            self.run_coms.sendComms(command)
+            
+            #self.ser.write(command.encode('utf-8'))
+            #time.sleep(0.01)
+            #response = self.ser.readline().decode('utf-8').strip()
+            self.run_coms.receiveComms
+                
         except Exception as e:
             print(f"UART Error: {e}")
 
