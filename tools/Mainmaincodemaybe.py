@@ -33,7 +33,15 @@ class Main:
                     self.joystick.TrunkState = None
 
                 self.run_comms.receiveComms()  # Handle any responses
-                self.motor.set_wheel_velocities(self.leftspeed, self.rightspeed)
+                if(self.leftspeed != 0):
+                    self.motor.set_left_wheel_velocity(self.leftspeed)
+                else:
+                    self.run_comms.sendComms("v 0 0\n")
+
+                if(self.rightspeed != 0):
+                    self.motor.set_right_wheel_velocity(self.rightspeed)
+                else:
+                    self.run_comms.sendComms("v 1 0\n")
 
         except KeyboardInterrupt:
             print("\nShutting down...")
