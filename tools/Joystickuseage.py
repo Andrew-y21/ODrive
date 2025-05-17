@@ -31,10 +31,10 @@ class joystick_useage:
         pygame.event.pump()
         for event in pygame.event.get():
             if event.type == pygame.JOYBUTTONDOWN:
-                if self.joystick.get_button(11):
+                if self.joystick.get_button(4):
                     self.TrunkState = "up"
                     print("up")
-                if self.joystick.get_button(12):
+                if self.joystick.get_button(5):
                     self.TrunkState = "down"
                     print("down")
                 if self.joystick.get_button(3):
