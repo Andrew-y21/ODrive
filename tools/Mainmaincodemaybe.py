@@ -17,6 +17,9 @@ class Main:
 
     def main(self):
         print("System started. Listening to joystick input...")
+        self.run_comms.sendComms("w odrv0.axis0.requested_state AXIS_STATE_CLOSED_LOOP_CONTROL")
+        self.run_comms.sendComms("w odrv0.axis1.requested_state AXIS_STATE_CLOSED_LOOP_CONTROL")
+
 
         try:
             while True:
